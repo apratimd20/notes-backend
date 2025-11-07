@@ -10,7 +10,7 @@ export const getNotes = async (req, res) => {
   }
 };
 
-// @desc Create note
+//  Create note
 export const createNote = async (req, res) => {
   const { title, content } = req.body;
 
@@ -18,6 +18,7 @@ export const createNote = async (req, res) => {
     const note = await Note.create({ userId: req.user._id, title, content });
     res.status(201).json({ success: true, message: "Note created successfully", note });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ success: false, message: error.message });
   }
 };
